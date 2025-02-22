@@ -1,13 +1,19 @@
 # Fantasy Football AI Decision Assistant
-The Fantasy Football AI Decision Assistant is an intelligent agent designed to help fantasy football managers make informed decisions. It leverages machine learning, historical data, and real-time analytics to optimize team selections, trades, waiver wire pickups, and weekly lineups.
+The Fantasy Football AI Strategic Advisor is an intelligent agent designed to help fantasy football managers develop winning strategies. It leverages machine learning, historical data, and real-time analytics to optimize team selections, trades, waiver wire pickups, and weekly lineups while providing in-depth strategic recommendations.
 
 ## Features
-- Lineup Optimization: Suggests the best starting lineup based on player performance, matchups, and injury reports.
-- Trade Recommendations: Evaluates trade offers and suggests fair-value deals.
-- Waiver Wire Analysis: Identifies top available players and provides priority rankings.
-- Injury Impact Assessment: Adjusts projections based on injury reports and expected recovery timelines.
-- Real-Time Updates: Fetches live data for up-to-the-minute decision-making.
-- Customizable Strategy: Allows users to set risk preferences (conservative vs. aggressive strategies).
+- Strategic Lineup Optimization: Suggests the best starting lineup based on player performance, matchups, and long-term season planning.
+- Trade Strategy & Analysis: Evaluates trade offers and suggests high-value deals tailored to your team’s strengths and weaknesses.
+- Waiver Wire Strategy: Identifies top available players and provides priority rankings based on projected future performance.
+- Injury Impact & Risk Management: Adjusts projections based on injury reports and expected recovery timelines while recommending contingency plans.
+- Live Data & Trend Analysis: Fetches real-time data and analyzes player trends for long-term decision-making.
+- Customizable Playstyle: Allows users to define their fantasy football strategy (aggressive, balanced, conservative) and receive tailored advice.
+
+## Installation
+
+### Prerequisites
+1. Python 3.11/3.12
+2. pip package manager
 
 ### Setup
 1. Clone the repository:
@@ -51,6 +57,10 @@ python main.py --waiver
 ```
 python main.py --trade "Player A" "Player B"
 ```
+Strategic season-long planning:
+```
+python main.py --strategy
+```
 
 ## Model & Data Sources
 
@@ -62,10 +72,15 @@ The AI agent uses:
 
 ## Roadmap
 
-- Add reinforcement learning for adaptive decision-making.
-- Expand support for multiple fantasy platforms.
+- Enhance AI-driven trade negotiation recommendations.
+- Expand predictive analytics for season-long trends.
+- Develop advanced risk-reward assessment tools.
 - Implement a mobile-friendly UI.
 
 ## Contributing
 
 Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+## License
+
+MIT License. See LICENSE for details.
