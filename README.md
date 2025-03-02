@@ -1,86 +1,196 @@
-# Fantasy Football AI Decision Assistant
-The Fantasy Football AI Strategic Advisor is an intelligent agent designed to help fantasy football managers develop winning strategies. It leverages machine learning, historical data, and real-time analytics to optimize team selections, trades, waiver wire pickups, and weekly lineups while providing in-depth strategic recommendations.
+# Fantasy Football AI Assistant 🏈
+
+An intelligent AI-powered assistant for fantasy football analysis and team management, combining OpenAI's language models with Yahoo Fantasy Sports integration.
 
 ## Features
-- Strategic Lineup Optimization: Suggests the best starting lineup based on player performance, matchups, and long-term season planning.
-- Trade Strategy & Analysis: Evaluates trade offers and suggests high-value deals tailored to your team’s strengths and weaknesses.
-- Waiver Wire Strategy: Identifies top available players and provides priority rankings based on projected future performance.
-- Injury Impact & Risk Management: Adjusts projections based on injury reports and expected recovery timelines while recommending contingency plans.
-- Live Data & Trend Analysis: Fetches real-time data and analyzes player trends for long-term decision-making.
-- Customizable Playstyle: Allows users to define their fantasy football strategy (aggressive, balanced, conservative) and receive tailored advice.
 
-## Installation
+- **AI-Powered Analysis**: Utilizes OpenAI's language models for intelligent fantasy football insights
+- **Yahoo Fantasy Integration**: Direct connection to your Yahoo Fantasy Football league
+- **Interactive Web Interface**: Built with Streamlit for a user-friendly experience
+- **Data-Driven Insights**: Analyzes combine metrics, injury history, and performance statistics
+- **Real-time Team Management**: View and analyze your current roster and available players
 
-### Prerequisites
-1. Python 3.11/3.12
-2. pip package manager
-
-### Setup
-1. Clone the repository:
+## Project Structure
 
 ```
-git clone https://github.com/your-repo/fantasy-football-ai.git
-cd fantasy-football-ai
+Fantasy_Football_AI_Agent
+├── src/
+│   ├── agent/              # AI agent implementation
+│   │   ├── __init__.py
+│   │   ├── fantasy_agent.py
+│   │   └── tools.py
+│   ├── data/              # Data handling and processing
+│   │   ├── __init__.py
+│   │   ├── data_loader.py
+│   │   ├── data_processor.py
+│   │   └── Dataset/       # CSV data files
+│   └── utils/             # Utility functions and configurations
+│       ├── __init__.py
+│       ├── config.py
+│       ├── chat_utils.py
+│       └── yahoo_fantasy.py
+├── storage/               # Persistent storage for vector indices
+├── .env                  # Environment variables
+├── app.py               # Streamlit web application
+├── main.py             # CLI application
+└── verify_setup.py    # Setup verification script
 ```
 
-2. Install dependencies:
-```
-pip install -r requirements.txt
-```
+## Getting Started
 
-3. Obtain an API key for real-time football stats (e.g., ESPN, Sleeper, or FantasyPros).
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/yourusername/fantasy-football-ai.git
+   cd fantasy-football-ai
+   ```
 
-4. Configure the .env file with your API key:
-```
-API_KEY=your_api_key_here
-```
+2. **Set Up Environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   pip install -r requirements.txt
+   ```
+
+3. **Configure Environment Variables**
+   - Create a `.env` file in the root directory
+   - Add your OpenAI API key:
+     ```
+     OPENAI_API_KEY=your_api_key_here
+     ```
+
+4. **Yahoo Fantasy Integration**
+   - Create an `oauth.json` file in the root directory with your Yahoo OAuth credentials:
+     ```json
+     {
+         "consumer_key": "your_consumer_key",
+         "consumer_secret": "your_consumer_secret",
+         "access_token": "your_access_token",
+         "refresh_token": "your_refresh_token"
+     }
+     ```
+   - Update the league ID in `src/utils/yahoo_fantasy.py`
+
+5. **Prepare Data**
+   Place your CSV files in `src/data/Dataset/`:
+   - `combine_data.csv`: NFL Combine performance metrics
+   - `injuries.csv`: Player injury history
+   - `rush.csv`: Rushing statistics
+
+6. **Verify Setup**
+   ```bash
+   python verify_setup.py
+   ```
+
+7. **Run the Application**
+   ```bash
+   streamlit run app.py
+   ```
+
 ## Usage
-### Running the AI Assistant
-To start the assistant, run:
-```
+
+### Web Interface (Streamlit)
+- Access the web interface at `http://localhost:8501`
+- Features:
+  - Fantasy Football rules in the sidebar
+  - Quick access to example questions
+  - Real-time chat interface
+  - Team roster view
+  - Available players list
+  - League information
+
+### Command Line Interface
+```bash
 python main.py
 ```
+- Interactive command-line interface for quick queries
+- Type 'quit' to exit
 
-### Example Commands
+## Configuration
 
-- Check optimal lineup:
-```
-python main.py --lineup
-```
-
-- Get waiver wire recommendations:
-```
-python main.py --waiver
-```
-
-- Evaluate a trade:
-```
-python main.py --trade "Player A" "Player B"
-```
-Strategic season-long planning:
-```
-python main.py --strategy
+### OpenAI Settings
+```python
+model = "gpt-4o-mini"
+temperature = 0.7
+max_tokens = 1500
 ```
 
-## Model & Data Sources
+### Yahoo Fantasy Settings
+```python
+sport_code = "nfl"
+league_id = "your_league_id"  # Update in yahoo_fantasy.py
+```
 
-The AI agent uses:
+## Data Format Requirements
 
-- Machine Learning Models: Regression and classification models trained on historical player performance.
-- API Integrations: Fetches real-time player stats from fantasy sports platforms.
-- Natural Language Processing: Allows users to ask lineup-related questions conversationally.
+### combine_data.csv
+- Player physical metrics
+- Combine performance statistics
+- Athletic measurements
 
-## Roadmap
+### injuries.csv
+- Injury history
+- Recovery timelines
+- Current injury status
 
-- Enhance AI-driven trade negotiation recommendations.
-- Expand predictive analytics for season-long trends.
-- Develop advanced risk-reward assessment tools.
-- Implement a mobile-friendly UI.
+### rush.csv
+- Rushing statistics
+- Performance metrics
+- Historical data
 
 ## Contributing
 
-Contributions are welcome! Feel free to open an issue or submit a pull request.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## ⚠️ Troubleshooting
+
+### Common Issues
+
+1. **API Key Errors**
+   - Verify OpenAI API key in `.env`
+   - Check API key validity
+   - Run `verify_setup.py`
+
+2. **Data Loading Issues**
+   - Check CSV file locations
+   - Verify file permissions
+   - Ensure correct file formats
+
+3. **Yahoo Fantasy Integration**
+   - Validate OAuth credentials
+   - Check league ID
+   - Verify API access permissions
+
+4. **Streamlit Interface**
+   - Port conflicts: Change port if 8501 is in use
+   - Session state issues: Clear browser cache
+   - Display problems: Check browser compatibility
+
+## Support
+
+For support:
+1. Check the troubleshooting section
+2. Review existing issues
+3. Create a new issue with:
+   - Detailed description
+   - Error messages
+   - Steps to reproduce
+   - Environment details
 
 ## License
 
-MIT License. See LICENSE for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- OpenAI for their language models
+- Yahoo Fantasy Sports for their API
+- Streamlit for the web interface framework
+- Contributors and maintainers
+
+<!-- ## Updates
+
+Check the [CHANGELOG](CHANGELOG.md) for version updates and changes.  -->
