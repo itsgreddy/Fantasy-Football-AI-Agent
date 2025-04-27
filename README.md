@@ -2,6 +2,8 @@
 
 An intelligent AI-powered assistant for fantasy football analysis and team management, combining OpenAI's language models with Yahoo Fantasy Sports integration.
 
+Changes to check
+
 ## Features
 
 - **AI-Powered Analysis**: Utilizes OpenAI's language models for intelligent fantasy football insights
